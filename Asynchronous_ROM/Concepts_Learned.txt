@@ -1,0 +1,7 @@
+behavioral architecture worries only about how the system shoudl behave, doesn`t care about how the synthetization will be done (vhdl actually does it by itself).
+
+data flow architecture specifies exactly how things should be synthetized (assigning bits, ANDs, ORs and etc).
+
+type definition in vhdl -> type *name* is *type* . 
+
+array VHDL type -> array (*range*) of *type* .
