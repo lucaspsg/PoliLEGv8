@@ -1,0 +1,26 @@
+how to initialize memory from a text file
+
+impure function init_mem return mem_type is
+    file text_file : text open read_mode is "rom.dat";
+    variable text_line : line;
+    variable mem_content : mem_type;
+    begin
+    for i in 0 to 2 ** addr_s - 1 loop
+        readline(text_file, text_line);
+        read(text_line, mem_content(i));
+    end loop;
+    
+    return mem_content;
+end function;
+
+pure functions -> dont change any signal values
+
+impure functions -> change signal values
+
+file text_file : text open read_mode is "rom.dat"; -> creates a file var and sets it on read mode
+
+variable text_line : line; -> creates a line type var that can access lines from text_file
+
+readline(text_file, text_line); -> reads line from text_file and assign its content to text_line
+          
+read(text_line, mem_content(i)); -> reads content from text_line and assigns it to mem_content(i)
