@@ -86,7 +86,7 @@ architecture tb of testbench is
 
                 ck_i <= '1';
                 rd_i <= '0';
-                wr_i <= '1';
+                wr_i <= '0';
                 addr_i <= "1000";
                 data_ii <= "00000000";
 
@@ -99,7 +99,24 @@ architecture tb of testbench is
 
                 wait for 100 ns;
 
-                assert data_oo = "11100000" report "error on write on address 8" severity error;
+                assert data_oo = "11100000" report "error on write on address 8, test with wr = 0" severity error;
+
+                ck_i <= '0';
+                rd_i <= '0';
+                wr_i <= '1';
+                addr_i <= "1000";
+                data_ii <= "00000000";
+
+                wait for 100 ns;
+
+                ck_i <= '1';
+                rd_i <= '1';
+                wr_i <= '0';
+                addr_i <= "1000";
+
+                wait for 100 ns;
+
+                assert data_oo = "11100000" report "error on write on address 8, test with ck = 0" severity error;
 
                 wait for 100 ns;
 

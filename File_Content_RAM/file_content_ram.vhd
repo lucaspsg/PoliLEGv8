@@ -41,7 +41,7 @@ architecture behavioral of ram is
 
     begin
 
-        process is 
+        process(ck, rd) is 
 
             begin
 
